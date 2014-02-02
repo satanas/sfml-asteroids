@@ -59,15 +59,14 @@ void Spaceship::update(float frametime) {
 
     if (position.x < -10.0f)
         position.x = APP_WIDTH;
-    if (position.x > APP_WIDTH)
+    else if (position.x > APP_WIDTH)
         position.x = 0.0f;
 
     if (position.y < -10.0f)
         position.y = APP_HEIGHT;
-    if (position.y > APP_HEIGHT)
+    else if (position.y > APP_HEIGHT)
         position.y = 0.0f;
     setPosition(position);
-
 }
 
 void Spaceship::onEvent(const sf::Event& event) {

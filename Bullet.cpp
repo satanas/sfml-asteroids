@@ -1,7 +1,7 @@
 #include "Bullet.hpp"
 
-const float Bullet::lifetime = 4000.0f;
-const float Bullet::speed = 1.0f;
+const float Bullet::lifetime = 1000.0f;
+const float Bullet::speed = 0.9f;
 
 Bullet::Bullet(sf::Vector2f position, float angle):
     is_alive(true),
@@ -22,15 +22,15 @@ void Bullet::update(float frametime) {
 
     remaining_life -= frametime;
     if (remaining_life <= 0) is_alive = false;
-    //printf("life: %f\n", remaining_life);
-    //fflush(stdout);
 
     sf::Vector2f distance = direction * speed * frametime;
     move(distance);
 }
 
 void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    //states.transform *= getTransform();
-    sf::Vertex point(getPosition(), sf::Color::White);
-    target.draw(&point, 1, sf::Points, states);
+    sf::Vertex line[] = {
+        sf::Vertex(getPosition()),
+        sf::Vertex(getPosition() + (direction * 5.0f))
+    };
+    target.draw(line, 2, sf::Lines, states);
 }
