@@ -1,25 +1,26 @@
-#ifndef _BULLET_HPP
-#define _BULLET_HPP_
+#ifndef _ASTEROID_HPP_
+#define _ASTEROID_HPP_
 
 #include <math.h>
 #include <SFML/Graphics.hpp>
 #include "Constants.hpp"
 
-class Bullet: public sf::Drawable, public sf::Transformable {
-    static const float lifetime;
-    static const float speed;
+class Asteroid: public sf::Drawable, public sf::Transformable {
+    static const float speed[3];
+    static const float radius[3];
 
     public:
-        Bullet(sf::Vector2f position, float angle);
-        ~Bullet();
+        Asteroid(int level);
+        ~Asteroid();
 
         bool isAlive();
         void update(float frametime);
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     private:
+        int level;
         bool is_alive;
-        float remaining_life;
         sf::Vector2f direction;
+        sf::CircleShape shape;
 };
 #endif
