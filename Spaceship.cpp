@@ -1,5 +1,8 @@
 #include "Spaceship.hpp"
-#include "Constants.hpp"
+
+const float Spaceship::acceleration = 0.5f;
+const float Spaceship::max_speed = 2.0f;
+const float Spaceship::rotation_speed = 0.3f;
 
 Spaceship::Spaceship() {
     shape.setPointCount( 3 );
@@ -40,8 +43,8 @@ void Spaceship::update(float frametime) {
 
     if (v_move != 0) {
         float rotation = getRotation();
-        float x_speed = cos(rotation * deg2rad);
-        float y_speed = sin(rotation * deg2rad);
+        float x_speed = cos(rotation * DEG2RAD);
+        float y_speed = sin(rotation * DEG2RAD);
 
         speed.x += v_move * acceleration * frametime * x_speed / 1000;
         speed.y += v_move * acceleration * frametime * y_speed / 1000;
@@ -54,14 +57,14 @@ void Spaceship::update(float frametime) {
 
     sf::Vector2f position = getPosition();
 
-    if (position.x <= -10.0f)
+    if (position.x < -10.0f)
         position.x = APP_WIDTH;
-    if (position.x >= APP_WIDTH)
+    if (position.x > APP_WIDTH)
         position.x = 0.0f;
 
-    if (position.y <= -10.0f)
+    if (position.y < -10.0f)
         position.y = APP_HEIGHT;
-    if (position.y >= APP_HEIGHT)
+    if (position.y > APP_HEIGHT)
         position.y = 0.0f;
     setPosition(position);
 

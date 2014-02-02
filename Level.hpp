@@ -1,6 +1,7 @@
 #ifndef _LEVEL_HPP_
 #define _LEVEL_HPP_
 
+#include "Bullet.hpp"
 #include "Spaceship.hpp"
 #include <SFML/Graphics.hpp>
 
@@ -15,6 +16,7 @@ class Level {
 
     private:
         Spaceship ship;
+        std::vector<Bullet> bullets;
 };
 
 #endif
