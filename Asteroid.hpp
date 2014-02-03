@@ -16,7 +16,6 @@ class Asteroid: public sf::Drawable, public sf::Transformable {
 
         bool isAlive();
         int getLevel();
-        //sf::Vector2f getPosition();
         bool checkPoint(sf::Vector2f point);
         void breakDown();
         void update(float frametime);

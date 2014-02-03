@@ -1,6 +1,6 @@
 #include "Spaceship.hpp"
 
-const float Spaceship::acceleration = 0.5f;
+const float Spaceship::acceleration = 1.0f;
 const float Spaceship::max_speed = 2.0f;
 const float Spaceship::rotation_speed = 0.3f;
 

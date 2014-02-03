@@ -97,7 +97,3 @@ bool Asteroid::checkPoint(sf::Vector2f point) {
 
     return (sqrDistance <= sqrRadius);
 }
-
-//sf::Vector2f Asteroid::getPosition() {
-//    return shape.getPosition();
-//}
