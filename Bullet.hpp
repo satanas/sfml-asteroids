@@ -14,6 +14,7 @@ class Bullet: public sf::Drawable, public sf::Transformable {
         ~Bullet();
 
         bool isAlive();
+        void kill();
         void update(float frametime);
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

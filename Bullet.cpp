@@ -34,3 +34,7 @@ void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     };
     target.draw(line, 2, sf::Lines, states);
 }
+
+void Bullet::kill() {
+    is_alive = false;
+}

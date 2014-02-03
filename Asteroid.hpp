@@ -11,9 +11,14 @@ class Asteroid: public sf::Drawable, public sf::Transformable {
 
     public:
         Asteroid(int level);
+        Asteroid(sf::Vector2f position, float angle, int level);
         ~Asteroid();
 
         bool isAlive();
+        int getLevel();
+        //sf::Vector2f getPosition();
+        bool checkPoint(sf::Vector2f point);
+        void breakDown();
         void update(float frametime);
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 

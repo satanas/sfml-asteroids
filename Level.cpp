@@ -38,6 +38,35 @@ void Level::update(float frametime) {
         } else
             start_asteroids = asteroids.erase(start_asteroids);
     }
+
+    std::vector<Asteroid> new_asteroids;
+    start_asteroids = asteroids.begin();
+
+    while (start_asteroids != asteroids.end()) {
+        start_bullets = bullets.begin();
+        while (start_bullets != bullets.end()) {
+            if (!start_bullets->isAlive()) {
+                ++start_bullets;
+                continue;
+            }
+
+            if (start_asteroids->checkPoint(start_bullets->getPosition())){
+                start_bullets->kill();
+                start_asteroids->breakDown();
+
+                if (start_asteroids->isAlive()) {
+                    sf::Vector2f position = start_asteroids->getPosition();
+                    float angle = rand() % 360;
+                    Asteroid a(position, angle, start_asteroids->getLevel());
+                    new_asteroids.push_back(a);
+                }
+                break;
+            }
+            ++start_bullets;
+        }
+        ++start_asteroids;
+    }
+    asteroids.insert(asteroids.end(), new_asteroids.begin(), new_asteroids.end());
 }
 
 void Level::show(sf::RenderTarget& target) {
